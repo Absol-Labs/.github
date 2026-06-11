@@ -13,7 +13,7 @@ time, **on the chain where the service lives**. Built to complement
 
 | Repo | Role |
 |------|------|
-| [streamproof-protocol](https://github.com/Absol-Labs/streamproof-protocol) | **Hub** — spec, `@streamproof/shared` (types / EIP-712 / ABI), whitepaper, settlement strategy |
+| [streamproof-protocol](https://github.com/Absol-Labs/streamproof-protocol) | **Hub** — spec, `@absol-labs/shared` (types / EIP-712 / ABI), whitepaper, settlement strategy |
 | [streamproof-contracts](https://github.com/Absol-Labs/streamproof-contracts) | On-chain escrow (EVM now; SVM/CosmWasm later). Owns the contract ABI |
 | [streamproof-oracle](https://github.com/Absol-Labs/streamproof-oracle) | **The verifier** + DePIN adapters + the decentralization ladder + multi-chain submitter |
 | [streamproof-sdk](https://github.com/Absol-Labs/streamproof-sdk) | TypeScript developer SDK |

@@ -22,7 +22,7 @@ Everything that *can* be coded now should be fully coded, tested, and PR'd now.
 
 ## Phase A — code now (no human needed), in order
 
-> Where a step would consume `@streamproof/shared` (not yet published), **vendor the
+> Where a step would consume `@absol-labs/shared` (not yet published), **vendor the
 > ABI/types locally** (copy from `streamproof-protocol/src/abi.ts` + `src/index.ts`)
 > exactly as the oracle already does with `protocol-types.ts`, and leave the
 > "swap to the published package" work for Phase C. Do not block on the publish.
@@ -48,7 +48,7 @@ human** → create that human issue.
 ## Phase B — hand-offs (human-intervention issues Codex creates as it hits them)
 
 These get a `human-intervention` issue and are set aside for us to run + test:
-- **protocol:** `human: tag & publish @streamproof/shared v0.1.0` (GitHub Packages;
+- **protocol:** `human: tag & publish @absol-labs/shared v0.1.0` (GitHub Packages;
   confirm org `.npmrc` + `packages: write`). Unblocks Phase C.
 - **contracts:** `human: deploy + verify StreamEscrow on Base Sepolia` (funded deployer
   key, mock-vs-real-USDC decision, `--broadcast`, Basescan verify, record artifact).
@@ -59,12 +59,12 @@ These get a `human-intervention` issue and are set aside for us to run + test:
 - **creds umbrella:** `human: provision Base Sepolia RPC + funded deployer/buyer/operator
   + oracle signer key` (the secrets gate the above depend on).
 
-## Phase C — after the human publishes `@streamproof/shared`
+## Phase C — after the human publishes `@absol-labs/shared`
 
 | # | Repo | Issue | What |
 |---|------|-------|------|
-| 11 | oracle | **#7** | swap the local `protocol-types.ts` shim → `@streamproof/shared` |
-| 12 | sdk | **#2** | swap local ABI/types shim → `@streamproof/shared` |
+| 11 | oracle | **#7** | swap the local `protocol-types.ts` shim → `@absol-labs/shared` |
+| 12 | sdk | **#2** | swap local ABI/types shim → `@absol-labs/shared` |
 
 ## Definition of "prototype zero" reached
 

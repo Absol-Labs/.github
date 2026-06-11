@@ -66,14 +66,14 @@ an SLA data/reputation product.
 **The repos (and how they fit).**
 | Repo | Role |
 |------|------|
-| `streamproof-protocol` | **Hub** — the spec + `@streamproof/shared` (types, EIP-712 typed-data, contract ABI) + whitepaper + settlement strategy. Everything depends on it. |
+| `streamproof-protocol` | **Hub** — the spec + `@absol-labs/shared` (types, EIP-712 typed-data, contract ABI) + whitepaper + settlement strategy. Everything depends on it. |
 | `streamproof-contracts` | The escrow (`evm/` now; SVM/CosmWasm later). **Owns the ABI**, which the hub re-exports. |
 | `streamproof-oracle` | **The verifier** — discovery → durable store → DePIN adapters → EIP-712 signer → multi-chain submitter. The crown-jewel, most security-critical repo. |
 | `streamproof-sdk` | TypeScript developer SDK (open/monitor/claim/reclaim). |
 | `streamproof-agent` | x402 + MCP server + framework tools + spend mandates — the agent-facing wedge. |
 
 **The seam (never break it).** The EIP-712 attestation + the contract ABI are the only
-cross-repo contract; they live canonically in `@streamproof/shared`. Consume them;
+cross-repo contract; they live canonically in `@absol-labs/shared`. Consume them;
 never fork them. Changing them is a breaking protocol change requiring a coordinated,
 version-bumped update across repos.
 
@@ -118,7 +118,7 @@ The essence:
 >    `gh issue view <ISSUE> --repo Absol-Labs/<REPO>`. If the protocol is involved,
 >    read `streamproof-protocol/docs/spec/attestation.md`.
 > 2. Confirm every `Depends on:` (including cross-repo deps like "needs
->    `@streamproof/shared` published") is closed. If not, STOP and report the blocker.
+>    `@absol-labs/shared` published") is closed. If not, STOP and report the blocker.
 > 3. Give me a 3–5 step plan for this issue before editing anything.
 > 4. Branch off `main`: `git checkout -b <type>/issue-<ISSUE>-<slug>`.
 > 5. Implement the **whole** issue per its Implementation Detail — satisfy every
@@ -136,5 +136,5 @@ The essence:
 >
 > Start by reading `AGENTS.md` + the issue, then give me the plan.
 
-**Recommended first issue:** `streamproof-protocol` #5 (publish `@streamproof/shared`)
+**Recommended first issue:** `streamproof-protocol` #5 (publish `@absol-labs/shared`)
 — the keystone that unblocks the oracle, sdk, and agent repos.

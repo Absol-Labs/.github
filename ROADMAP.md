@@ -7,7 +7,7 @@ importantly — **exactly how much to build for the prototype.**
 
 ```mermaid
 flowchart TD
-    P["protocol (hub)<br/>@streamproof/shared"] --> C[contracts]
+    P["protocol (hub)<br/>@absol-labs/shared"] --> C[contracts]
     P --> O[oracle]
     P --> S[sdk]
     C -. ABI .-> P
@@ -20,7 +20,7 @@ flowchart TD
     style A fill:#d4f4dd,stroke:#1f883d
 ```
 
-**Unblock order:** publish `@streamproof/shared` (protocol) → consumers wire it →
+**Unblock order:** publish `@absol-labs/shared` (protocol) → consumers wire it →
 deploy escrow (contracts) → oracle/SDK target a real escrow → agent builds on the SDK.
 
 ## The phases (across all repos)
@@ -45,7 +45,7 @@ deploy escrow (contracts) → oracle/SDK target a real escrow → agent builds o
 
 | Repo | Issues | Why |
 |------|--------|-----|
-| protocol | #5 publish `@streamproof/shared` | unblocks every consumer |
+| protocol | #5 publish `@absol-labs/shared` | unblocks every consumer |
 | contracts | #3 deploy script ✅ done · #4 ABI artifact · **run the live Base Sepolia deploy** | a real escrow to target |
 | oracle | #2 Akash spike · #3 Akash adapter · #4 discovery+store · #5 signer+submitter · #6 e2e loop · #7 consume shared | the verifier loop |
 | sdk | #2 consume shared · #3 client · #4 `hireAkashCompute` · #5 status/claim/reclaim · #9 examples | the developer entry + demo driver |

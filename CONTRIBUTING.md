@@ -5,7 +5,7 @@ that is binding for *how* to build in that repo; this file is the *cross-repo* g
 
 ## Repos & ownership
 
-- **streamproof-protocol** — hub (spec + `@streamproof/shared` + docs). Shared.
+- **streamproof-protocol** — hub (spec + `@absol-labs/shared` + docs). Shared.
 - **streamproof-contracts** — escrow (Track A, @arunabha003).
 - **streamproof-oracle** — verifier + adapters (Track B, @siddhantcookie).
 - **streamproof-sdk** — developer SDK (Track B).
@@ -14,7 +14,7 @@ that is binding for *how* to build in that repo; this file is the *cross-repo* g
 ## The one rule that matters: the seam
 
 The **EIP-712 attestation + the contract ABI** are the contract between repos. They
-live canonically in **streamproof-protocol** (`@streamproof/shared`). Never fork
+live canonically in **streamproof-protocol** (`@absol-labs/shared`). Never fork
 those shapes in a consumer repo. A change to the attestation/ABI is a **breaking
 protocol change** — bump the shared package and coordinate contracts + oracle + sdk
 + agent together.
@@ -27,7 +27,7 @@ protocol change** — bump the shared package and coordinate contracts + oracle 
 3. Honor the **prototype cut-line** in [ROADMAP.md](./ROADMAP.md): if it's not on the
    "DO for prototype" list, it's not part of the prototype.
 4. **Cross-repo dependencies are real.** Many issues say "requires X in another repo
-   first" (e.g. consuming `@streamproof/shared` needs the hub to publish it). If you
+   first" (e.g. consuming `@absol-labs/shared` needs the hub to publish it). If you
    hit one, stop and do the upstream issue (or flag it), don't fake it.
 
 ## Per-change workflow (every repo)

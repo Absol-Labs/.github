@@ -21,7 +21,7 @@ the StreamProof org. It has two parts:
 >    **`CONTRIBUTING.md`** + **`ROADMAP.md`** (in `Absol-Labs/.github`).
 > 3. Read the issue: `gh issue view <ISSUE> --repo Absol-Labs/<REPO>`. Confirm its
 >    **`Depends on:`** issues are closed. If a dependency (including a **cross-repo**
->    one, e.g. "needs `@streamproof/shared` published") is open, STOP and report which
+>    one, e.g. "needs `@absol-labs/shared` published") is open, STOP and report which
 >    blocker to do first — do not fake it.
 > 4. Read the canonical spec if the issue touches the protocol:
 >    `streamproof-protocol/docs/spec/attestation.md`.
@@ -29,7 +29,7 @@ the StreamProof org. It has two parts:
 > **Product context:** StreamProof verifies DePIN service delivery off-chain and
 > releases USDC per verified second, settling on the chain where the service lives.
 > The attestation (EIP-712) + contract ABI are the cross-repo seam and live in
-> `@streamproof/shared` — consume them, never fork them. Money only moves for
+> `@absol-labs/shared` — consume them, never fork them. Money only moves for
 > verified, in-window, non-failed delivery; missing/stale/failed/unverifiable state
 > pays nothing (buyer-favoring, fail-safe).
 >
@@ -65,7 +65,7 @@ the StreamProof org. It has two parts:
 ## Part 2 — Reference playbook
 
 ### The repos & the seam
-- **protocol** (hub) → `@streamproof/shared`: types, zod, EIP-712 typed-data, ABI.
+- **protocol** (hub) → `@absol-labs/shared`: types, zod, EIP-712 typed-data, ABI.
 - **contracts** → the escrow; owns the ABI (the hub re-exports it).
 - **oracle** → the verifier + adapters + submitter.
 - **sdk** → developer SDK (consumes shared + ABI).
@@ -101,7 +101,7 @@ Fork tests (contracts) need `BASE_SEPOLIA_RPC_URL`; they skip without it.
 - **No unilateral** on-chain broadcasts, package publishes, or `main` commits.
 
 ### Cross-repo dependency cheatsheet (current)
-- Consuming `@streamproof/shared` (oracle #7, sdk #2, agent #2) ⟵ needs **protocol #5** (publish).
+- Consuming `@absol-labs/shared` (oracle #7, sdk #2, agent #2) ⟵ needs **protocol #5** (publish).
 - Hub ABI sync (protocol #9) ⟵ needs **contracts #4** (ABI artifact).
 - Oracle/SDK targeting a real escrow ⟵ needs the **contracts live deploy**.
 - Agent layer ⟵ needs **sdk** core methods (#3–#5).
