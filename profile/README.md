@@ -21,6 +21,9 @@ time, **on the chain where the service lives**. Built to complement
 
 ## Start here
 
+- **What we are / who we serve (two-sided, permissionless):** [product-strategy.md](https://github.com/Absol-Labs/streamproof-protocol/blob/main/docs/product-strategy.md)
+- **The real flow (human + AI-agent journeys):** [production-flow.md](https://github.com/Absol-Labs/streamproof-protocol/blob/main/docs/production-flow.md)
+- **How delivery is proven (no 401s):** [verification-model.md](https://github.com/Absol-Labs/streamproof-protocol/blob/main/docs/verification-model.md)
 - **Spec:** [protocol/docs/spec/attestation.md](https://github.com/Absol-Labs/streamproof-protocol/blob/main/docs/spec/attestation.md)
 - **Cross-repo roadmap + prototype scope:** [ROADMAP.md](https://github.com/Absol-Labs/.github/blob/main/ROADMAP.md)
 - **How to contribute:** [CONTRIBUTING.md](https://github.com/Absol-Labs/.github/blob/main/CONTRIBUTING.md)
