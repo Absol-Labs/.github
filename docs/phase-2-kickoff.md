@@ -5,6 +5,11 @@ end-to-end for Akash only, settling on Base only — no cross-chain, no second n
 nothing mocked.** Canonical plan: `metrik-protocol/docs/master-plan.md`; build-scope
 tracker: `metrik-protocol#30`.
 
+> **Current local execution state:** the workspace now keeps an authoritative
+> [`implementation-track.md`](../../../implementation-track.md) at the repo root. Read it
+> before choosing the next issue. It records completed work, local merge state, blockers,
+> and `human-intervention` issues.
+
 ## The scope rule
 
 Build **only `phase:p2`** issues. Anything labeled **`phase:p3`** (cross-chain,
@@ -48,6 +53,24 @@ each repo's `AGENTS.md` for the Phase-2 build.
 
 Respect each issue's own `Depends on:`. Within a stage, issues can run in parallel unless
 one depends on another.
+
+## Current status snapshot (adapt this before starting)
+
+**Completed locally and merged to local `main`:**
+
+- `metrik-protocol#23` — service binding model
+- `metrik-protocol#31` — user-facing Metrik branding pass
+- `metrik-oracle#39` — SLA quality checks beyond liveness
+- `metrik-site` branding sweep related to `#31`
+
+**Current hard blocker:**
+
+- `metrik-protocol#34` — human intervention required to publish `@absol-labs/shared`
+  with the new `ServiceBinding` surface
+
+**Implication:** do **not** start downstream work that would require the unpublished
+binding surface or fake a local fork of it into another repo. Use the tracker file to
+confirm whether an issue is genuinely independent before starting.
 
 **Stage 1 — On-chain interface (contracts first; the ABI must stabilize before anything
 binds to it):**
@@ -107,13 +130,34 @@ verified-uptime data). The master plan scopes these into Phase 2, but they are n
 labeled `phase:p2`. If relabeled, slot the bond after Stage 1 and reputation after the SLA
 receipt (`#10`).
 
+## Adapted next-issue rule
+
+The original build order is the architectural ideal, but the *actual* next issue must be
+chosen by this rule:
+
+1. Prefer the earliest `phase:p2` issue whose own `Depends on:` are closed **and** whose
+   implementation does not require an unpublished package, a real credential, a funded
+   account, a live deployment, or a new piece of scope.
+2. If the next architecturally-ordered issue is blocked, open or reference the correct
+   `human-intervention` issue and move to the next independent one.
+3. Record the decision and blocker in `implementation-track.md`.
+
+As of now, the practical blocker chain is:
+
+- `metrik-protocol#34` blocks `metrik-sdk#24`
+- `metrik-sdk#24` blocks parts of the site/operator onboarding lane
+- several agent issues are still blocked by open dependencies (`#2`, `#3`, `#5`)
+- oracle observability (`#11`) is blocked by `metrik-protocol#6`
+
 ## Per-issue prompt
 
 Use the Task prompt in `codex-kickoff.md` PART C, and add to step 1:
-> Also read `metrik-protocol/docs/master-plan.md` (scope + architecture) and
+> Also read `metrik-protocol/docs/master-plan.md` (scope + architecture),
+> `implementation-track.md` (current completed work + blockers), and
 > `metrik-protocol/docs/verification-model.md`. Phase 2 verifies Akash via **L1**
 > (public-endpoint probe) plus **L4 zkTLS** for the agent path — never the provider admin
 > API. Settle on **Base only**; do not add cross-chain or a second network.
 
-**Start with `metrik-contracts#8`** (protocol fee), then proceed down the build order,
-self-merging green PRs and raising `human-intervention` issues when blocked.
+**Do not blindly restart at `metrik-contracts#8`.** Start from the earliest *currently
+independent* issue after consulting `implementation-track.md`, then proceed down the build
+order, self-merging green PRs and raising `human-intervention` issues when blocked.
