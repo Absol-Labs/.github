@@ -1,7 +1,11 @@
-# Codex Playbook — working across the StreamProof repos
+# Codex Playbook — working across the Metrik repos
+
+> **Current kickoff:** read [`CODEX-KICKOFF-MODEL-A.md`](./CODEX-KICKOFF-MODEL-A.md) first —
+> it is the canonical **Model A** onboarding (product framing + scope fence + build order).
+> This playbook is the cross-repo working manual that complements it.
 
 This is the operating manual for driving an AI coding agent (Codex 5.5, etc.) across
-the StreamProof org. It has two parts:
+the Metrik org. It has two parts:
 1. **The session prompt** — paste it to start a working session (fill in `<REPO>` /
    `<ISSUE>`).
 2. **The reference playbook** — the rules the prompt relies on.
@@ -26,8 +30,8 @@ the StreamProof org. It has two parts:
 > 4. Read the canonical spec if the issue touches the protocol:
 >    `streamproof-protocol/docs/spec/attestation.md`.
 >
-> **Product context:** StreamProof verifies DePIN service delivery off-chain and
-> releases USDC per verified second, settling on the chain where the service lives.
+> **Product context:** Metrik verifies service delivery off-chain (infra-agnostic) and
+> releases stablecoins for verified delivery, single-chain on Base.
 > The attestation (EIP-712) + contract ABI are the cross-repo seam and live in
 > `@absol-labs/shared` — consume them, never fork them. Money only moves for
 > verified, in-window, non-failed delivery; missing/stale/failed/unverifiable state
