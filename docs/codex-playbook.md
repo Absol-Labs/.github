@@ -30,8 +30,8 @@ the Metrik org. It has two parts:
 > 4. Read the canonical spec if the issue touches the protocol:
 >    `streamproof-protocol/docs/spec/attestation.md`.
 >
-> **Product context:** StreamProof verifies DePIN service delivery off-chain and
-> releases USDC per verified second, settling on the chain where the service lives.
+> **Product context:** Metrik verifies service delivery off-chain (infra-agnostic) and
+> releases stablecoins for verified delivery, single-chain on Base.
 > The attestation (EIP-712) + contract ABI are the cross-repo seam and live in
 > `@absol-labs/shared` — consume them, never fork them. Money only moves for
 > verified, in-window, non-failed delivery; missing/stale/failed/unverifiable state
