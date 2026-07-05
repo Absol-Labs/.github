@@ -1,7 +1,11 @@
-# Codex Playbook — working across the StreamProof repos
+# Codex Playbook — working across the Metrik repos
+
+> **Current kickoff:** read [`CODEX-KICKOFF-MODEL-A.md`](./CODEX-KICKOFF-MODEL-A.md) first —
+> it is the canonical **Model A** onboarding (product framing + scope fence + build order).
+> This playbook is the cross-repo working manual that complements it.
 
 This is the operating manual for driving an AI coding agent (Codex 5.5, etc.) across
-the StreamProof org. It has two parts:
+the Metrik org. It has two parts:
 1. **The session prompt** — paste it to start a working session (fill in `<REPO>` /
    `<ISSUE>`).
 2. **The reference playbook** — the rules the prompt relies on.

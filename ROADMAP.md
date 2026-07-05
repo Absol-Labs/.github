@@ -1,7 +1,8 @@
-# StreamProof Cross-Repo Roadmap
+# Metrik Cross-Repo Roadmap (Model A)
 
-The single map of how the five repos fit together, what blocks what, and — most
-importantly — **exactly how much to build for the prototype.**
+How the repos fit together and what to build now. **Model A:** Metrik is an infra-agnostic
+**verified service marketplace + payment rail for AI agents**, single-chain (Base, USDC).
+Canonical plan: [metrik-protocol/docs/master-plan.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/master-plan.md).
 
 ## Dependency spine
 
@@ -20,60 +21,38 @@ flowchart TD
     style A fill:#d4f4dd,stroke:#1f883d
 ```
 
-**Unblock order:** publish `@absol-labs/shared` (protocol) → consumers wire it →
-deploy escrow (contracts) → oracle/SDK target a real escrow → agent builds on the SDK.
+**Unblock order:** publish `@absol-labs/shared` (protocol) → consumers wire it → deploy
+escrow (contracts) → oracle/SDK target the real escrow → agent builds on the SDK.
 
-## The phases (across all repos)
+## Status
 
-- **P0 Foundation** — interface, repo baselines, threat model, deploy strategy. *(largely done)*
-- **P1 Prototype** — one verified Akash stream on Base Sepolia, end to end. *(now)*
-- **P2 Hardening & Multi-chain** — verifier ladder (threshold + dispute), audit pkg, fees, guardian, receipts, Solana payout, more adapters.
-- **P3 Scale** — decentralized verifier network (AVS/CRE), native Solana, Cosmos/FVM, multi-service orchestration.
+Live end-to-end on **testnet** (real escrow + oracle + real Akash compute + metered USDC
+accrual). The hardened escrow (fee / guardian / SLA-receipt / M-of-N verifier) is built,
+but the deployed testnet escrow is the older pre-quorum build **pending a redeploy**.
 
----
+## Build now (Model A, `phase:p2`)
 
-## 🎯 The prototype cut-line — *how much to build now*
+- **Verification hardening:** canary known-answer (oracle#49), nonce + randomized probing
+  (oracle#50), per-serviceRef resolution (oracle#51), auto-close on failure (oracle#52),
+  consumer zkTLS first-class (agent#24).
+- **Marketplace & reputation:** operator listings (site#13), reputation-ranked discovery
+  (site#37), verified reputation index (protocol#38, promotes #25).
+- **Agent path & economics:** hire→stream→settle E2E (agent#13), caller-auth (agent#21),
+  protocol fee (contracts#8, done), SLA bond (contracts#22).
+- **The escrow redeploy** + ABI resync (protocol#9).
 
-**Definition of the prototype (the only thing that matters for the month-one demo):**
+## Moat next (`phase:p3`)
 
-> A developer opens a verified Akash compute stream on Base Sepolia through the SDK.
-> The oracle posts delivery attestations; the escrow accrues USDC only for verified
-> time; two consecutive failures pause accrual; the buyer reclaims unspent funds.
-> A thin demo surface shows it. **That's the whole prototype.**
+Decentralized staked multi-vantage verifier (oracle#54), optimistic dispute + slashing
+(contracts#26), redundant re-execution sampling (oracle#53), service categories +
+benchmarking (protocol#39).
 
-### ✅ DO for the prototype (in order)
+## Deprecated / parked — off the critical path, NOT committed
 
-| Repo | Issues | Why |
-|------|--------|-----|
-| protocol | #5 publish `@absol-labs/shared` | unblocks every consumer |
-| contracts | #3 deploy script ✅ done · #4 ABI artifact · **run the live Base Sepolia deploy** | a real escrow to target |
-| oracle | #2 Akash spike · #3 Akash adapter · #4 discovery+store · #5 signer+submitter · #6 e2e loop · #7 consume shared | the verifier loop |
-| sdk | #2 consume shared · #3 client · #4 `hireAkashCompute` · #5 status/claim/reclaim · #9 examples | the developer entry + demo driver |
-| agent | *(none required)* — spend mandates already exist | — |
+Cross-chain / multi-chain settlement (protocol#4, contracts#11/#12, sdk#7), per-network
+deep adapters (io.net / Aethir / AEP-64 — oracle#12/#13/#31), and multi-network
+orchestration (agent#10) are **closed under Model A**; reopen only if we ever expand beyond
+single-chain.
 
-That's ~16 issues. A single env-key signer on **testnet is acceptable** for the
-prototype (it's the v1 accepted risk).
-
-### 🟡 Stretch (only if the core demo is solid) — the investor "wow"
-- agent #5 (MCP server) **or** agent #4 (x402 scheme) + agent #8 (example agent) —
-  "an AI agent hires a GPU and pays per verified second." High narrative value;
-  not required to prove the protocol works.
-
-### ⛔ DEFER (post-prototype — do NOT build now)
-- **Oracle ladder** (Turnkey/Lit/AVS/CRE, TEEs) — oracle #8–#10. Single signer is fine for the demo.
-- **Multi-chain / Solana / Cosmos / FVM** — protocol #4, sdk #7, contracts #11–#12. Base only.
-- **Fees, guardian, SLA receipts, threshold verifier, audit pkg** — contracts #6–#10.
-- **More adapters (io.net, Aethir)** — oracle #12–#13. Akash only.
-- **Frameworks, signed mandates, gas abstraction, observability** — agent #6–#7/#3, sdk #8, oracle #11.
-- **Whitepaper** — do it *in parallel* for fundraising, but it doesn't block the demo.
-
-**Rule of thumb:** if an issue isn't on the "DO" list, it is not part of the
-prototype. Resist scope creep — the demo's value is *proving the loop works*, not
-breadth.
-
----
-
-## After the prototype
-Pick the next phase by what fundraising/pilots need: usually (1) the agent wedge
-(x402/MCP) for the narrative, then (2) the verifier ladder for credibility, then
-(3) multi-chain for reach. See each repo's P2/P3 issues.
+**Rule of thumb:** if an issue isn't `phase:p2`, it is not part of the current build. The
+value is proving the verified-delivery loop + the marketplace, not breadth.
