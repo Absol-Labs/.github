@@ -12,17 +12,6 @@ AWS, bare metal — and Metrik only ever sees a URL and a payout wallet. Settlem
 single-chain (Base, USDC). Metrik is complementary to [x402](https://www.x402.org/): x402
 settles the payment, Metrik proves the work was delivered before that payment is earned.
 
-## What "verified" honestly means
-
-Metrik proves **delivery**, not correctness — and the distinction is deliberate. Delivery
-(the endpoint responded, with a correctly-shaped answer, within its SLA, to real traffic) is
-provable to a high, trust-minimized bar, and that is what the verifier attests to.
-Correctness (the output is actually right, or the claimed model really ran) is **not** cheaply
-provable for real models: zkML overheads make cryptographic proof of a modern inference
-infeasible today. Metrik therefore secures correctness **economically and statistically** —
-cheating is made detectable and unprofitable — never cryptographically. The buyer guarantee is
-concrete: a refund is your money back for this transaction, automatically, not a reputation
-score that merely warns the next buyer.
 
 ## How it works
 
@@ -48,9 +37,6 @@ away with; the lower layers run continuously, the upper layers are the trust-min
 | **L4 — M-of-N staked multi-vantage verifier** | Independent, multi-region operators sign a threshold attestation into the on-chain verifier | **Live but federated** — 2-of-3, single operator today; independent staked operators are roadmap |
 | **L5 — optimistic dispute + slashing** | A challenge window with bonds ([UMA Optimistic Oracle V3](https://uma.xyz/)) gives recourse against a bad attestation | **Deployed / armed** |
 
-L4 is the moat, and today it is honestly federated: the threshold signing exists on-chain, but
-one operator runs it. Decentralizing L4 (independent, staked operators) and arming L5 disputes
-in the live flow are the priorities that turn the current v1 into a trust-minimized network.
 
 ## Status
 
@@ -84,22 +70,4 @@ Packages are published on npm: `@absol-labs/shared` 0.8.0, `@absol-labs/sdk` 0.5
 | [metrik-agent](https://github.com/Absol-Labs/metrik-agent) | `@absol-labs/agent` — spend mandates, x402 facilitator, MCP server, framework tools, Reclaim zkTLS, non-custodial [CDP](https://www.coinbase.com/developer-platform) wallets |
 | [metrik-site](https://github.com/Absol-Labs/metrik-site) | Marketing landing + dApp |
 
-## Start here
 
-Read the canonical docs in [metrik-protocol/docs](https://github.com/Absol-Labs/metrik-protocol/tree/main/docs).
-[master-plan.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/master-plan.md) is
-the source of truth for the whole protocol;
-[product-strategy.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/product-strategy.md)
-covers positioning;
-[verification-model.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/verification-model.md)
-explains how delivery is proven;
-[threat-model.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/threat-model.md)
-and [architecture.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/architecture.md)
-cover the system; and
-[spec/attestation.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/spec/attestation.md)
-is the on-chain attestation format. To build across the repos, see
-[CONTRIBUTING.md](https://github.com/Absol-Labs/.github/blob/main/CONTRIBUTING.md).
-
-> **Naming:** the product is **Metrik**. The repositories and the deployed EIP-712 domain
-> (`name="StreamProof"`, immutable) keep the historical `streamproof` / `StreamProof`
-> identifiers for on-chain and package compatibility.
