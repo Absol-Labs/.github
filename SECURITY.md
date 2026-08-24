@@ -7,7 +7,7 @@ across every repo. This policy applies org-wide; per-repo specifics live in each
 ## Reporting
 
 Report vulnerabilities **privately** — do not open a public issue for an exploitable finding.
-Email `arunabha@armore.ai` or use GitHub private security advisories on the affected repo.
+Email `contact@metrik.live` or use GitHub private security advisories on the affected repo.
 Include reproduction steps, affected repo and version, and the concrete impact. We prioritize
 anything that lets an operator accrue for undelivered work, lets a buyer's escrowed funds be
 taken or locked, or forges an attestation.
