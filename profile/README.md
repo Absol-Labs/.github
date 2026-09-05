@@ -7,7 +7,9 @@ makes those purchases safe to make.
 
 <br>
 
-## <img src="https://raw.githubusercontent.com/Absol-Labs/.github/main/profile/metrik-logo.svg" width="22" align="center" alt=""> &nbsp;Metrik
+<img src="https://raw.githubusercontent.com/Absol-Labs/.github/main/profile/metrik-logo.svg" width="72" alt="Metrik">
+
+## Metrik
 
 **Verification and Settlement Layer for the Agentic Commerce**
 
