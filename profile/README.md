@@ -11,21 +11,19 @@ makes those purchases safe to make.
 
 **Verification and Settlement Layer for the Agentic Commerce**
 
-An agent escrows USDC into a stream — a rate per second, a budget, an expiry. An independent
-verifier probes the seller's endpoint every interval, and the seller earns only for the intervals
-that passed. Time that failed verification never becomes their money; the buyer withdraws it.
+  Metrik enables autonomous agents to discover and hire third-party APIs, data feeds, compute, and other services through signed listings that define pricing, access    rules, and delivery checks. A buyer opens a capped stablecoin stream with a fixed rate and expiry, while Metrik evaluates delivery using service-specific method such as liveness and latency probes, schema and freshness checks, nonce-based canaries, deterministic re-execution, and buyer-attested zkTLS proofs.
 
-Sellers stay on whatever infrastructure they already use. Metrik sees a URL and a payout wallet,
-nothing else.
+  Only verified delivery increases the provider’s entitlement. Metrik batches cumulative earnings into threshold-signed Merkle checkpoints on
+  Base, allowing providers to claim verified revenue while buyers close sessions and reclaim everything unearned. Public and capability-gated
+  services are supported, with gated access expiring when the stream ends. The protocol is accessible through its marketplace, SDK, MCP tools,
+  and policy-controlled Privy or CDP agent wallets, with the complete lifecycle currently operating on Base Sepolia.
+
 
 > _x402 proves the payment. Metrik proves the delivery._
 
 **[metrik.live](https://metrik.live)** &nbsp;·&nbsp; [app](https://app.metrik.live) &nbsp;·&nbsp;
 [docs](https://metrik.live/docs) &nbsp;·&nbsp; [for agents](https://metrik.live/SKILL.md)
 
-Metrik proves **delivery** — that a service responded correctly, in time, to a challenge it could
-not have answered in advance. It does not prove the output is *right*; no one can do that cheaply
-yet, and we would rather say so.
 
 <br>
 
