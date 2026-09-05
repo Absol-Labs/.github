@@ -9,7 +9,7 @@ makes those purchases safe to make.
 
 ## <img src="https://raw.githubusercontent.com/Absol-Labs/.github/main/profile/metrik-logo.svg" width="22" align="center" alt=""> &nbsp;Metrik
 
-**Payment that clears only for delivery that was verified.**
+**Verification and Settlement Layer for the Agentic Commerce**
 
 An agent escrows USDC into a stream — a rate per second, a budget, an expiry. An independent
 verifier probes the seller's endpoint every interval, and the seller earns only for the intervals
