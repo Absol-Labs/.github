@@ -19,5 +19,6 @@ The canonical product docs live in
 [metrik-protocol/docs](https://github.com/Absol-Labs/metrik-protocol/tree/main/docs); start
 from [master-plan.md](https://github.com/Absol-Labs/metrik-protocol/blob/main/docs/master-plan.md).
 
-> **Naming:** the product is **Metrik**; the repositories and the deployed EIP-712 domain keep
-> the historical `streamproof` / `StreamProof` identifiers for compatibility.
+> **Naming:** the product is **Metrik** and the repositories are `metrik-*`. The deployed EIP-712
+> domain is immutable and still reads `StreamProof`; local working directories are likewise still
+> `streamproof-*`. Those two are compatibility artifacts, not stale branding.
